@@ -26,6 +26,7 @@ class Ui_MemberEdit(object):
     def setupUi(self, MemberEdit):
         MemberEdit.setObjectName(_fromUtf8("MemberEdit"))
         MemberEdit.resize(509, 357)
+        MemberEdit.setStyleSheet(_fromUtf8(""))
         self.member_edit_name = QtGui.QLineEdit(MemberEdit)
         self.member_edit_name.setGeometry(QtCore.QRect(150, 100, 221, 32))
         self.member_edit_name.setObjectName(_fromUtf8("member_edit_name"))

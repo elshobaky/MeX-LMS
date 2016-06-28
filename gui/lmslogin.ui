@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Mahmoud Elshobaky</author>
  <class>Login</class>
  <widget class="QWidget" name="Login">
   <property name="geometry">
@@ -12,6 +13,9 @@
   </property>
   <property name="windowTitle">
    <string>MeX LMS - Login</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QLineEdit" name="login_username">
    <property name="geometry">
@@ -34,6 +38,9 @@
      <width>301</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
    </property>
    <property name="placeholderText">
     <string>password</string>

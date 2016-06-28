@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Mahmoud Elshobaky</author>
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>788</width>
+    <width>787</width>
     <height>575</height>
    </rect>
   </property>
@@ -24,7 +25,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="books_tab">
      <attribute name="icon">
@@ -34,204 +35,13 @@
      <attribute name="title">
       <string>Books</string>
      </attribute>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>120</y>
-        <width>771</width>
-        <height>361</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>769</width>
-         <height>359</height>
-        </rect>
-       </property>
-       <widget class="QTableWidget" name="books_table">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>60</y>
-          <width>731</width>
-          <height>291</height>
-         </rect>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::SingleSelection</enum>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <column>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Title</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Available</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Copies</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Author</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Publisher</string>
-         </property>
-        </column>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>0</y>
-          <width>761</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Search</string>
-        </property>
-        <widget class="QPushButton" name="book_search_btn">
-         <property name="geometry">
-          <rect>
-           <x>670</x>
-           <y>20</y>
-           <width>81</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Search</string>
-         </property>
-         <property name="autoDefault">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="book_search_id">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>41</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhDigitsOnly</set>
-         </property>
-         <property name="placeholderText">
-          <string>ID</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="book_search_title">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>20</y>
-           <width>191</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="placeholderText">
-          <string>Title</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="book_search_author">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>20</y>
-           <width>171</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="placeholderText">
-          <string>Author</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="book_search_publisher">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>20</y>
-           <width>141</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="placeholderText">
-          <string>Publisher</string>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="book_search_available">
-         <property name="geometry">
-          <rect>
-           <x>550</x>
-           <y>10</y>
-           <width>91</width>
-           <height>25</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Available</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="book_search_not_available">
-         <property name="geometry">
-          <rect>
-           <x>550</x>
-           <y>30</y>
-           <width>111</width>
-           <height>25</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Not Available</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>10</y>
-        <width>751</width>
-        <height>101</height>
+        <x>10</x>
+        <y>0</y>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="title">
@@ -362,6 +172,196 @@ color:rgb(255, 0, 0);
        </property>
       </widget>
      </widget>
+     <widget class="QTableWidget" name="books_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>170</y>
+        <width>611</width>
+        <height>341</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerItem</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Title</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Available</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Copies</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Author</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Publisher</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>761</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Search</string>
+      </property>
+      <widget class="QPushButton" name="book_search_btn">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>20</y>
+         <width>82</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Search</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="book_search_id">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>41</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
+       <property name="placeholderText">
+        <string>ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="book_search_title">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>191</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Title</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="book_search_author">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>171</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="placeholderText">
+        <string>Author</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="book_search_publisher">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>20</y>
+         <width>141</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="placeholderText">
+        <string>Publisher</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="book_search_available">
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>10</y>
+         <width>91</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Available</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="book_search_not_available">
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>30</y>
+         <width>111</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Not Available</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>-3</x>
+        <y>96</y>
+        <width>781</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="members_tab">
      <attribute name="icon">
@@ -371,166 +371,12 @@ color:rgb(255, 0, 0);
      <attribute name="title">
       <string>Members</string>
      </attribute>
-     <widget class="QScrollArea" name="scrollArea_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>70</y>
-        <width>771</width>
-        <height>411</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>769</width>
-         <height>409</height>
-        </rect>
-       </property>
-       <widget class="QTableWidget" name="members_table">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>70</y>
-          <width>731</width>
-          <height>331</height>
-         </rect>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::SingleSelection</enum>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <column>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Name</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>fine</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Email</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Mobile</string>
-         </property>
-        </column>
-       </widget>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>751</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Search</string>
-        </property>
-        <widget class="QPushButton" name="member_search_btn">
-         <property name="geometry">
-          <rect>
-           <x>640</x>
-           <y>20</y>
-           <width>101</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Search</string>
-         </property>
-         <property name="autoDefault">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="member_search_id">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>61</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhDigitsOnly</set>
-         </property>
-         <property name="placeholderText">
-          <string>ID</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="member_search_name">
-         <property name="geometry">
-          <rect>
-           <x>70</x>
-           <y>20</y>
-           <width>211</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="placeholderText">
-          <string>Name</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="member_search_email">
-         <property name="geometry">
-          <rect>
-           <x>280</x>
-           <y>20</y>
-           <width>201</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhEmailCharactersOnly</set>
-         </property>
-         <property name="placeholderText">
-          <string>Email</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="member_search_mob">
-         <property name="geometry">
-          <rect>
-           <x>480</x>
-           <y>20</y>
-           <width>151</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhDigitsOnly</set>
-         </property>
-         <property name="placeholderText">
-          <string>Mobile No.</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_9">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>771</width>
+        <width>761</width>
         <height>61</height>
        </rect>
       </property>
@@ -627,6 +473,684 @@ color:rgb(255, 0, 0);
        </property>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>80</y>
+        <width>251</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Search</string>
+      </property>
+      <widget class="QLineEdit" name="member_search_id">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>241</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
+       <property name="placeholderText">
+        <string>ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="member_search_name">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>241</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Name</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="member_search_email">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>241</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhEmailCharactersOnly</set>
+       </property>
+       <property name="placeholderText">
+        <string>Email</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="member_search_mob">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>241</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
+       <property name="placeholderText">
+        <string>Mobile No.</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="member_search_btn">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>190</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Search</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QTableWidget" name="members_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>80</y>
+        <width>511</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>fine</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Mobile</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>56</y>
+        <width>771</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>70</y>
+        <width>16</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="borrows_tab">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>img/borrow.png</normaloff>img/borrow.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Borrow</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>761</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Add Book</string>
+      </property>
+      <widget class="QPushButton" name="borrow_add_btn">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>20</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Add Borrow</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_add_book_id">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>201</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Book ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_add_member_id">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>20</y>
+         <width>201</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="placeholderText">
+        <string>Member ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="borrow_add_error">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>60</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+color:rgb(255, 0, 0);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="borrow_add_active">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>20</y>
+         <width>91</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="borrow_add_start">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>60</y>
+         <width>141</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="borrow_add_end">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>60</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>60</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>End</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QTableWidget" name="borrows_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>220</y>
+        <width>611</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerItem</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Book ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Member ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>End</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>110</y>
+        <width>761</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Search</string>
+      </property>
+      <widget class="QPushButton" name="borrow_search_btn">
+       <property name="geometry">
+        <rect>
+         <x>660</x>
+         <y>30</y>
+         <width>82</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Search</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_search_id">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>41</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
+       <property name="placeholderText">
+        <string>ID</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="borrow_search_active">
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>30</y>
+         <width>71</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="borrow_search_not_active">
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>50</y>
+         <width>101</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Not Active</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_search_book_id">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>61</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Book ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_search_member_id">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>20</y>
+         <width>81</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="placeholderText">
+        <string>Member ID</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="borrow_search_start">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>131</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>20</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="borrow_search_end">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>20</y>
+         <width>131</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>20</y>
+         <width>31</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>End</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="borrow_search_to">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>60</y>
+         <width>131</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>60</y>
+         <width>31</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>To</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>60</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>From</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="borrow_search_from">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>60</y>
+         <width>131</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>60</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time period</string>
+       </property>
+      </widget>
+      <zorder>borrow_search_btn</zorder>
+      <zorder>borrow_search_id</zorder>
+      <zorder>borrow_search_active</zorder>
+      <zorder>borrow_search_not_active</zorder>
+      <zorder>borrow_add_book_id</zorder>
+      <zorder>borrow_add_member_id</zorder>
+      <zorder>borrow_add_start</zorder>
+      <zorder>borrow_search_book_id</zorder>
+      <zorder>borrow_search_member_id</zorder>
+      <zorder>borrow_search_start</zorder>
+      <zorder>label_3</zorder>
+      <zorder>borrow_search_end</zorder>
+      <zorder>label_4</zorder>
+      <zorder>borrow_search_to</zorder>
+      <zorder>label_5</zorder>
+      <zorder>label_6</zorder>
+      <zorder>borrow_search_from</zorder>
+      <zorder>label_11</zorder>
+     </widget>
+     <widget class="Line" name="line_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>781</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="admin_tab">
      <attribute name="icon">
@@ -639,9 +1163,9 @@ color:rgb(255, 0, 0);
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>0</y>
-        <width>381</width>
+        <x>300</x>
+        <y>10</y>
+        <width>391</width>
         <height>221</height>
        </rect>
       </property>
@@ -667,8 +1191,8 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="admin_edit_error">
        <property name="geometry">
         <rect>
-         <x>180</x>
-         <y>160</y>
+         <x>190</x>
+         <y>170</y>
          <width>171</width>
          <height>31</height>
         </rect>
@@ -702,10 +1226,13 @@ color:rgb(255, 0, 0);
         </rect>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::ImhHiddenText</set>
+        <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText</set>
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
         <string>new password</string>
@@ -721,10 +1248,13 @@ color:rgb(255, 0, 0);
         </rect>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::ImhHiddenText</set>
+        <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText</set>
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
         <string>old password</string>
@@ -747,10 +1277,10 @@ color:rgb(255, 0, 0);
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>260</y>
-        <width>371</width>
-        <height>171</height>
+        <x>300</x>
+        <y>250</y>
+        <width>391</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -779,10 +1309,13 @@ color:rgb(255, 0, 0);
         </rect>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::ImhHiddenText</set>
+        <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText</set>
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
         <string>password</string>
@@ -837,9 +1370,9 @@ color:rgb(255, 0, 0);
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
-        <width>321</width>
-        <height>481</height>
+        <y>0</y>
+        <width>251</width>
+        <height>511</height>
        </rect>
       </property>
       <property name="title">
@@ -849,10 +1382,13 @@ color:rgb(255, 0, 0);
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>90</y>
-         <width>281</width>
-         <height>391</height>
+         <y>130</y>
+         <width>211</width>
+         <height>381</height>
         </rect>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
        </property>
        <property name="selectionMode">
         <enum>QAbstractItemView::SingleSelection</enum>
@@ -860,6 +1396,9 @@ color:rgb(255, 0, 0);
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectRows</enum>
        </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
        <column>
         <property name="text">
          <string>ID</string>
@@ -883,28 +1422,12 @@ color:rgb(255, 0, 0);
        <property name="title">
         <string>Search</string>
        </property>
-       <widget class="QPushButton" name="admin_search_btn">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>20</y>
-          <width>101</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Search</string>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
-        </property>
-       </widget>
        <widget class="QLineEdit" name="admin_search_id">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>51</width>
+          <width>71</width>
           <height>32</height>
          </rect>
         </property>
@@ -918,7 +1441,7 @@ color:rgb(255, 0, 0);
        <widget class="QLineEdit" name="admin_search_username">
         <property name="geometry">
          <rect>
-          <x>60</x>
+          <x>80</x>
           <y>20</y>
           <width>141</width>
           <height>32</height>
@@ -929,6 +1452,48 @@ color:rgb(255, 0, 0);
         </property>
        </widget>
       </widget>
+      <widget class="QPushButton" name="admin_search_btn">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>90</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Search</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="line_4">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>0</y>
+        <width>41</width>
+        <height>511</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_5">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>230</y>
+        <width>501</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="options_tab">
@@ -939,50 +1504,88 @@ color:rgb(255, 0, 0);
      <attribute name="title">
       <string>Options</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>761</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Database</string>
+      </property>
+      <widget class="QPushButton" name="db_backup">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>40</y>
+         <width>92</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Backup</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="db_restore">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>40</y>
+         <width>92</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Restore</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_12">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>751</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>About</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>130</y>
+        <width>781</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_8">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>350</y>
+        <width>781</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionImport">
-   <property name="text">
-    <string>import</string>
-   </property>
-  </action>
-  <action name="actionExport">
-   <property name="text">
-    <string>export</string>
-   </property>
-  </action>
-  <action name="actionAdd_Book">
-   <property name="text">
-    <string>Add Book</string>
-   </property>
-  </action>
-  <action name="actionView_books">
-   <property name="text">
-    <string>View books</string>
-   </property>
-  </action>
-  <action name="actionView_members">
-   <property name="text">
-    <string>View members</string>
-   </property>
-  </action>
-  <action name="actionAdd_member">
-   <property name="text">
-    <string>Add member</string>
-   </property>
-  </action>
-  <action name="actionAdd_admin">
-   <property name="text">
-    <string>Add admin</string>
-   </property>
-  </action>
-  <action name="actionChange_password">
-   <property name="text">
-    <string>Change password</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

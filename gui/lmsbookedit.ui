@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MeX LMS - Edit book</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QLineEdit" name="book_edit_title">
    <property name="geometry">
     <rect>
