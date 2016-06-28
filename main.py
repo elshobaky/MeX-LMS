@@ -1,7 +1,7 @@
-import sys, logging
+import sys, logging, datetime
 from PyQt4 import QtGui, QtCore
-from data_models import init_db, Admin, Member, Book
-from gui import lmslogin, lmsgui, lmsbookedit, lmsmemberedit, lmsadminedit
+from data_models import init_db, Admin, Member, Book, Borrow
+from gui import lmslogin, lmsgui, lmsbookedit, lmsmemberedit, lmsadminedit, lmsborrowedit
 
 class LoginWindwo(QtGui.QMainWindow, lmslogin.Ui_Login):
 	def __init__(self, parent=None):
@@ -67,6 +67,20 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.member_add_mob.returnPressed.connect(self.member_add_btn.click)
 		### member table ###
 		self.members_table.doubleClicked.connect(self.members_table_clicked)
+		##### borrows_tab #####
+		### borrow search ###
+		self.borrow_search_btn.clicked.connect(self.update_borrows_tab)
+		# connect pressing enter in line_edit with button action
+		self.borrow_search_id.returnPressed.connect(self.borrow_search_btn.click)
+		self.borrow_search_book_id.returnPressed.connect(self.borrow_search_btn.click)
+		self.borrow_search_member_id.returnPressed.connect(self.borrow_search_btn.click)
+		### borrow add ###
+		self.borrow_add_btn.clicked.connect(self.add_borrow)
+		# connect pressing enter in line_edit with button action
+		self.borrow_add_book_id.returnPressed.connect(self.borrow_add_btn.click)
+		self.borrow_add_member_id.returnPressed.connect(self.borrow_add_btn.click)
+		### borrow table ###
+		self.borrows_table.doubleClicked.connect(self.borrows_table_clicked)
 		##### admin_tab #####
 		### admin search ###
 		self.admin_search_btn.clicked.connect(self.update_admin_tab)
@@ -91,7 +105,9 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.update_admin_tab()
 		self.update_books_tab()
 		self.update_members_tab()
+		self.update_borrows_tab()
 
+	##### Books Tab #####
 	def update_books_tab(self):
 		books = []
 		bid = unicode(self.book_search_id.text())
@@ -157,6 +173,7 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		msg.setStandardButtons(QtGui.QMessageBox.Ok)
 		return msg.exec_()
 
+	##### Members Tab #####
 	def update_members_tab(self):
 		members = []
 		mid = unicode(self.member_search_id.text())
@@ -208,7 +225,76 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		msg.setStandardButtons(QtGui.QMessageBox.Ok)
 		return msg.exec_()
 
+	##### Borrows Tab #####
+	def update_borrows_tab(self):
+		borrows = []
+		bid = unicode(self.borrow_search_id.text())
+		bid = int(bid) if bid.isdigit() else 0
+		book_id = unicode(self.borrow_search_book_id.text())
+		book_id = int(book_id) if book_id.isdigit() else 0
+		member_id = unicode(self.borrow_search_member_id.text())
+		member_id = int(member_id) if member_id.isdigit() else 0
+		start = self.borrow_search_start.date().toPyDate()
+		if start == datetime.date(2000,1,1): start = None
+		end = self.borrow_search_end.date().toPyDate()
+		if end == datetime.date(2000,1,1): end = None
+		active = self.borrow_search_active.isChecked()
+		not_active = self.borrow_search_not_active.isChecked()
+		if active == not_active:
+			active = None
+		elif not_active:
+			active = False
+		from_date = self.borrow_search_from.date().toPyDate()
+		if from_date == datetime.date(2000,1,1): from_date = None
+		to_date = self.borrow_search_to.date().toPyDate()
+		if to_date == datetime.date(2000,1,1): to_date = None
+		borrows = Borrow.get_all(bid=bid, book_id=book_id, member_id=member_id, start=start, end=end, active=active, from_date=from_date, to_date=to_date)
+		self.borrows_table.clearContents()
+		self.borrows_table.setEditTriggers(QtGui.QTableWidget.NoEditTriggers)
+		self.borrows_table.setRowCount(len(borrows))
+		self.borrows_table.setColumnCount(6)
+		for n in range(len(borrows)):
+			self.borrows_table.setItem(n, 0, QtGui.QTableWidgetItem(unicode(borrows[n].id)))
+			self.borrows_table.setItem(n, 1, QtGui.QTableWidgetItem(unicode(borrows[n].book_id)))
+			self.borrows_table.setItem(n, 2, QtGui.QTableWidgetItem(unicode(borrows[n].member_id)))
+			self.borrows_table.setItem(n, 3, QtGui.QTableWidgetItem(unicode(borrows[n].start)))
+			self.borrows_table.setItem(n, 4, QtGui.QTableWidgetItem(unicode(borrows[n].end)))
+			self.borrows_table.setItem(n, 5, QtGui.QTableWidgetItem(unicode(borrows[n].active)))
 
+	def add_borrow(self):
+		self.borrow_add_error.setStyleSheet('color: red')
+		book_id = unicode(self.borrow_add_book_id.text())
+		member_id = unicode(self.borrow_add_member_id.text())
+		start = self.borrow_add_start.date().toPyDate()
+		if start == datetime.date(2000,1,1): start = None
+		end = self.borrow_add_end.date().toPyDate()
+		if end == datetime.date(2000,1,1): end = None
+		active = self.borrow_add_active.isChecked()
+		m = Borrow.add(book_id=book_id, member_id=member_id, start=start, end=end, active=active)
+		if isinstance(m, str):
+			self.borrow_add_error.setText(m)
+			return
+		self.borrow_add_error.setStyleSheet('color: green')
+		self.borrow_add_error.setText('Borrow Added')
+		self.update_borrows_tab()
+
+	def borrows_table_clicked(self):
+		index = self.borrows_table.selectedIndexes()[0]
+		borrow_id = int(self.borrows_table.model().data(index).toString())
+		borrow = Borrow.by_id(borrow_id)
+		if not borrow:
+			return self.borrow_not_found()
+		borrow_window.view_borrow(borrow)
+
+	def borrow_not_found(self):
+		msg = QtGui.QMessageBox()
+		msg.setWindowTitle("ERROR!")
+		msg.setIcon(QtGui.QMessageBox.Critical)
+		msg.setText("Requsted borrow not found!")
+		msg.setStandardButtons(QtGui.QMessageBox.Ok)
+		return msg.exec_()
+
+	##### Admins Tab #####
 	def update_admin_tab(self):
 		global admin
 		self.admin_edit_username.setText(admin.username)
@@ -377,6 +463,8 @@ class MemberWindow(QtGui.QMainWindow, lmsmemberedit.Ui_MemberEdit):
 		if email == member.email:
 			email = None
 		mob = unicode(self.member_edit_mob.text())
+		if mob == member.mob:
+			mob = None
 		fine = unicode(self.member_edit_fine.text())
 		m = member.update(name=name, email=email, mob=mob, fine=fine)
 		if isinstance(m, str):
@@ -411,6 +499,78 @@ class MemberWindow(QtGui.QMainWindow, lmsmemberedit.Ui_MemberEdit):
 			Member.delete(member_id)
 			self.delete_done
 			main_window.update_members_tab()
+			self.close()
+
+
+class BorrowWindow(QtGui.QMainWindow, lmsborrowedit.Ui_BorrowEdit):
+	def __init__(self, parent=None):
+		super(BorrowWindow, self).__init__(parent)
+		self.setupUi(self)
+		########## bind buttons action ##########
+		self.borrow_edit_cancel_btn.clicked.connect(self.close)
+		self.borrow_edit_btn.clicked.connect(self.edit_borrow)
+		self.borrow_delete_btn.clicked.connect(self.delete_borrow)
+
+	def view_borrow(self, borrow):
+		self.borrow_edit_error.setStyleSheet('color: red')
+		self.borrow_edit_error.setText('')
+		self.borrow_edit_id.setText(str(borrow.id))
+		self.borrow_edit_book_id.setText(str(borrow.book_id))
+		self.borrow_edit_member_id.setText(str(borrow.member_id))
+		self.borrow_edit_start.setDate(borrow.start)
+		self.borrow_edit_end.setDate(borrow.end)
+		active = QtCore.Qt.Checked if borrow.active else QtCore.Qt.Unchecked
+		self.borrow_edit_active.setCheckState(active)
+		self.show()
+
+	def edit_borrow(self):
+		borrow_id = str(self.borrow_edit_id.text())
+		borrow_id = int(borrow_id) if borrow_id.isdigit() else 0
+		borrow = Borrow.by_id(borrow_id)
+		if not borrow:
+			main_window.borrow_not_found()
+			self.close()
+			return
+		book_id = str(self.borrow_edit_book_id.text())
+		book_id = int(book_id) if book_id.isdigit() else 0
+		member_id = str(self.borrow_edit_member_id.text())
+		member_id = int(member_id) if member_id.isdigit() else 0
+		start = self.borrow_edit_start.date().toPyDate()
+		end = self.borrow_edit_end.date().toPyDate()
+		active = self.borrow_edit_active.isChecked()
+		b = borrow.update(book_id=book_id, member_id=member_id, start=start, end=end, active=active)
+		if isinstance(b, str):
+			self.borrow_edit_error.setStyleSheet('color: red')
+			self.borrow_edit_error.setText(b)
+			return
+		self.borrow_edit_error.setStyleSheet('color: green')
+		self.borrow_edit_error.setText('Your changes has been saved.')
+		main_window.update_borrows_tab()
+
+	def delete_confirm(self):
+		msg = QtGui.QMessageBox()
+		msg.setWindowTitle("WARNING!")
+		msg.setIcon(QtGui.QMessageBox.Question)
+		msg.setText("Are you sure you want to delete this borrow ?")
+		msg.setStandardButtons(QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+		return msg.exec_()
+
+	def delete_done(self):
+		msg = QtGui.QMessageBox()
+		msg.setWindowTitle("DONE!")
+		msg.setIcon(QtGui.QMessageBox.Information)
+		msg.setText("Borrow deleted successfully!")
+		msg.setStandardButtons(QtGui.QMessageBox.Ok)
+		return msg.exec_()
+
+	def delete_borrow(self):
+		do_delete = self.delete_confirm() == 16384
+		borrow_id = str(self.borrow_edit_id.text())
+		borrow_id = int(borrow_id) if borrow_id.isdigit() else 0
+		if do_delete:
+			Borrow.delete(borrow_id)
+			self.delete_done
+			main_window.update_borrows_tab()
 			self.close()
 
 
@@ -494,6 +654,7 @@ if __name__ == '__main__':
 	main_window = MainApp()
 	book_window = BookWindow()
 	member_window = MemberWindow()
+	borrow_window = BorrowWindow()
 	admin_window = AdminWindow()
 	login_window.show()
 	app.exec_()
