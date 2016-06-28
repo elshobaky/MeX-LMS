@@ -1,2 +1,2 @@
 pyqt4
-webapp2
+sqlAlchemy
