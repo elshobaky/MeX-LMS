@@ -1,4 +1,4 @@
-import random, hashlib, logging
+import random, hashlib, logging, datetime
 from string import letters
 from db.base import *
 from assets.validators import valid_name, valid_phone, valid_email
@@ -332,6 +332,145 @@ class Book(Base ,BaseModel):
 				books = books.order_by(self.id).all()
 				session.expunge_all()
 				return books
+			except Exception as e:
+				logging.error(e)
+				return []
+
+
+
+class Borrow(Base ,BaseModel):
+	__tablename__ = 'borrow'
+	# create primary key column as default
+	id = Column(Integer, primary_key=True)
+	book_id = Column(Integer)
+	member_id = Column(Integer)
+	start = Column(Date)
+	end = Column(Date)
+	active = Column(Boolean, default=True)
+
+	@classmethod
+	def add(self, book_id, member_id, start, end, active=True):
+		if not Book.by_id(book_id):
+			return 'invalid book id'
+		if not Member.by_id(member_id):
+			return 'invalid member id'
+		if not isinstance(start, datetime.date):
+			return 'invalid start date'
+		if not isinstance(end, datetime.date):
+			return 'invalid end date'
+		if start >= end:
+			return 'end must be after start'
+		if not isinstance(active, bool):
+			return 'invalid active value'
+		self = self(book_id=book_id, member_id=member_id, start=start, end=end, active=active)
+		return self.put()
+
+
+	def update(self, book_id=None, member_id=None, start=None, end=None, active=True):
+		if book_id and not Book.by_id(book_id):
+			return 'invalid book id'
+		if member_id and not Member.by_id(member_id):
+			return 'invalid member id'
+		if start and not isinstance(start, datetime.date):
+			return 'invalid start date'
+		if end and not isinstance(end, datetime.date):
+			return 'invalid end date'
+		if not isinstance(active, bool):
+			return 'invalid active value'
+		edits = {}
+		edits['book_id'] = book_id if book_id else self.book_id
+		edits['member_id'] = member_id if member_id else self.member_id
+		edits['start'] = start if start else self.start
+		edits['end'] = end if end else self.end
+		if edits['start'] >= edits['end']:
+			return 'end must be after start'
+		edits['active'] = active if isinstance(active, bool) else self.active
+		with self.session() as session:
+			entity = session.query(type(self)).filter(type(self).id==self.id)
+			entity.update(edits)
+			session.commit()
+			session.expunge_all()
+			return self
+
+	@classmethod
+	def delete(self, id):
+		try:
+			entity = self.by_id(id)
+			with self().session() as session:
+				session.delete(entity)
+				session.commit()
+				return True
+		except Exception as e:
+			logging.error(e)
+			return
+
+	@classmethod
+	def by_id(self, id):
+		with self().session() as session:
+			try:
+				q = session.query(self).filter(self.id==id).one()
+				session.expunge_all()
+				return q
+			except Exception as e:
+				logging.error(e)
+				return
+
+	@classmethod
+	def by_book_id(self, book_id, n=10, s=0):
+		with self().session() as session:
+			try:
+				q = session.query(self).order_by(self.id).filter(self.book_id==book_id).offset(s).limit(n).all()
+				session.expunge_all()
+				return q
+			except Exception as e:
+				logging.error(e)
+				return []
+
+	@classmethod
+	def by_member_id(self, member_id, n=10, s=0):
+		with self().session() as session:
+			try:
+				q = session.query(self).order_by(self.id).filter(self.member_id==member_id).offset(s).limit(n).all()
+				session.expunge_all()
+				return q
+			except Exception as e:
+				logging.error(e)
+				return []
+
+
+	@classmethod
+	def get_all(self, bid=None, book_id=None, member_id=None, start=None, end=None, active=None, from_date=None, to_date=None):
+		if book_id and not isinstance(book_id, int):
+			return 'invalid book id'
+		if member_id and not isinstance(member_id, int):
+			return 'invalid member id'
+		if start and not isinstance(start, datetime.date):
+			return 'invalid start date'
+		if end and not isinstance(end, datetime.date):
+			return 'invalid end date'
+		if active and not isinstance(active, bool):
+			return 'invalid active value'
+		if from_date and not isinstance(from_date, datetime.date):
+			return 'invalid from_date'
+		if to_date and not isinstance(to_date, datetime.date):
+			return 'invalid to_date'
+		filters = []
+		if bid: filters.append(self.id==bid)
+		if start: filters.append(self.start==start)
+		if end: filters.append(self.end==end)
+		if book_id: filters.append(self.book_id==book_id)
+		if member_id: filters.append(self.member_id==member_id)
+		if isinstance(active, bool): filters.append(self.active==active)
+		if from_date: filters.append(self.end >= from_date)
+		if to_date: filters.append(self.start <= to_date)
+		with self().session() as session:
+			try:
+				borrows = session.query(self)
+				for f in filters:
+					borrows = borrows.filter(f)
+				borrows = borrows.order_by(self.id).all()
+				session.expunge_all()
+				return borrows
 			except Exception as e:
 				logging.error(e)
 				return []
