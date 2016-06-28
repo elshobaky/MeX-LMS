@@ -1,7 +1,7 @@
 import os, sys
 from contextlib import contextmanager
 # import sql Alchemy classes and modules
-from sqlalchemy import create_engine, Column, ForeignKey, Integer, String, Boolean, Unicode
+from sqlalchemy import create_engine, Column, ForeignKey, Integer, String, Boolean, Unicode, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import sessionmaker
