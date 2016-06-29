@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>787</width>
-    <height>575</height>
+    <width>786</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
       <x>0</x>
       <y>0</y>
       <width>781</width>
-      <height>551</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -479,7 +479,7 @@ color:rgb(255, 0, 0);
         <x>520</x>
         <y>80</y>
         <width>251</width>
-        <height>431</height>
+        <height>421</height>
        </rect>
       </property>
       <property name="title">
@@ -569,7 +569,7 @@ color:rgb(255, 0, 0);
         <x>0</x>
         <y>80</y>
         <width>511</width>
-        <height>431</height>
+        <height>421</height>
        </rect>
       </property>
       <property name="verticalScrollBarPolicy">
@@ -660,7 +660,7 @@ color:rgb(255, 0, 0);
       <widget class="QPushButton" name="borrow_add_btn">
        <property name="geometry">
         <rect>
-         <x>600</x>
+         <x>560</x>
          <y>20</y>
          <width>101</width>
          <height>31</height>
@@ -678,7 +678,7 @@ color:rgb(255, 0, 0);
         <rect>
          <x>20</x>
          <y>20</y>
-         <width>201</width>
+         <width>181</width>
          <height>32</height>
         </rect>
        </property>
@@ -689,9 +689,9 @@ color:rgb(255, 0, 0);
       <widget class="QLineEdit" name="borrow_add_member_id">
        <property name="geometry">
         <rect>
-         <x>250</x>
+         <x>220</x>
          <y>20</y>
-         <width>201</width>
+         <width>181</width>
          <height>32</height>
         </rect>
        </property>
@@ -705,9 +705,9 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="borrow_add_error">
        <property name="geometry">
         <rect>
-         <x>520</x>
+         <x>410</x>
          <y>60</y>
-         <width>231</width>
+         <width>341</width>
          <height>31</height>
         </rect>
        </property>
@@ -733,7 +733,7 @@ color:rgb(255, 0, 0);
       <widget class="QCheckBox" name="borrow_add_active">
        <property name="geometry">
         <rect>
-         <x>470</x>
+         <x>420</x>
          <y>20</y>
          <width>91</width>
          <height>25</height>
@@ -751,7 +751,7 @@ color:rgb(255, 0, 0);
         <rect>
          <x>80</x>
          <y>60</y>
-         <width>141</width>
+         <width>121</width>
          <height>32</height>
         </rect>
        </property>
@@ -762,9 +762,9 @@ color:rgb(255, 0, 0);
       <widget class="QDateEdit" name="borrow_add_end">
        <property name="geometry">
         <rect>
-         <x>300</x>
+         <x>270</x>
          <y>60</y>
-         <width>151</width>
+         <width>131</width>
          <height>32</height>
         </rect>
        </property>
@@ -794,7 +794,7 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>250</x>
+         <x>220</x>
          <y>60</y>
          <width>51</width>
          <height>31</height>
@@ -815,9 +815,9 @@ color:rgb(255, 0, 0);
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>220</y>
-        <width>611</width>
-        <height>291</height>
+        <y>250</y>
+        <width>781</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="verticalScrollBarPolicy">
@@ -847,7 +847,17 @@ color:rgb(255, 0, 0);
       </column>
       <column>
        <property name="text">
+        <string>Book Title</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Member ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Member Name</string>
        </property>
       </column>
       <column>
@@ -872,7 +882,7 @@ color:rgb(255, 0, 0);
         <x>0</x>
         <y>110</y>
         <width>761</width>
-        <height>91</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
@@ -881,9 +891,9 @@ color:rgb(255, 0, 0);
       <widget class="QPushButton" name="borrow_search_btn">
        <property name="geometry">
         <rect>
-         <x>660</x>
-         <y>30</y>
-         <width>82</width>
+         <x>610</x>
+         <y>40</y>
+         <width>131</width>
          <height>51</height>
         </rect>
        </property>
@@ -897,7 +907,7 @@ color:rgb(255, 0, 0);
       <widget class="QLineEdit" name="borrow_search_id">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>20</x>
          <y>20</y>
          <width>41</width>
          <height>32</height>
@@ -913,8 +923,8 @@ color:rgb(255, 0, 0);
       <widget class="QCheckBox" name="borrow_search_active">
        <property name="geometry">
         <rect>
-         <x>560</x>
-         <y>30</y>
+         <x>480</x>
+         <y>70</y>
          <width>71</width>
          <height>25</height>
         </rect>
@@ -929,8 +939,8 @@ color:rgb(255, 0, 0);
       <widget class="QCheckBox" name="borrow_search_not_active">
        <property name="geometry">
         <rect>
-         <x>560</x>
-         <y>50</y>
+         <x>480</x>
+         <y>90</y>
          <width>101</width>
          <height>25</height>
         </rect>
@@ -945,7 +955,7 @@ color:rgb(255, 0, 0);
       <widget class="QLineEdit" name="borrow_search_book_id">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>80</x>
          <y>20</y>
          <width>61</width>
          <height>32</height>
@@ -958,7 +968,7 @@ color:rgb(255, 0, 0);
       <widget class="QLineEdit" name="borrow_search_member_id">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>340</x>
          <y>20</y>
          <width>81</width>
          <height>32</height>
@@ -974,8 +984,8 @@ color:rgb(255, 0, 0);
       <widget class="QDateEdit" name="borrow_search_start">
        <property name="geometry">
         <rect>
-         <x>240</x>
-         <y>20</y>
+         <x>160</x>
+         <y>60</y>
          <width>131</width>
          <height>32</height>
         </rect>
@@ -987,8 +997,8 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_3">
        <property name="geometry">
         <rect>
-         <x>200</x>
-         <y>20</y>
+         <x>120</x>
+         <y>60</y>
          <width>41</width>
          <height>31</height>
         </rect>
@@ -1006,8 +1016,8 @@ color:rgb(255, 0, 0);
       <widget class="QDateEdit" name="borrow_search_end">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>20</y>
+         <x>340</x>
+         <y>60</y>
          <width>131</width>
          <height>32</height>
         </rect>
@@ -1019,8 +1029,8 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_4">
        <property name="geometry">
         <rect>
-         <x>380</x>
-         <y>20</y>
+         <x>310</x>
+         <y>60</y>
          <width>31</width>
          <height>31</height>
         </rect>
@@ -1038,8 +1048,8 @@ color:rgb(255, 0, 0);
       <widget class="QDateEdit" name="borrow_search_to">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>60</y>
+         <x>340</x>
+         <y>100</y>
          <width>131</width>
          <height>32</height>
         </rect>
@@ -1051,8 +1061,8 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_5">
        <property name="geometry">
         <rect>
-         <x>380</x>
-         <y>60</y>
+         <x>310</x>
+         <y>100</y>
          <width>31</width>
          <height>31</height>
         </rect>
@@ -1070,8 +1080,8 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_6">
        <property name="geometry">
         <rect>
-         <x>200</x>
-         <y>60</y>
+         <x>120</x>
+         <y>100</y>
          <width>41</width>
          <height>31</height>
         </rect>
@@ -1089,8 +1099,8 @@ color:rgb(255, 0, 0);
       <widget class="QDateEdit" name="borrow_search_from">
        <property name="geometry">
         <rect>
-         <x>240</x>
-         <y>60</y>
+         <x>160</x>
+         <y>100</y>
          <width>131</width>
          <height>32</height>
         </rect>
@@ -1102,8 +1112,8 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_11">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>60</y>
+         <x>0</x>
+         <y>100</y>
          <width>111</width>
          <height>31</height>
         </rect>
@@ -1116,7 +1126,36 @@ color:rgb(255, 0, 0);
         </font>
        </property>
        <property name="text">
-        <string>Time period</string>
+        <string>Time period:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_search_member_name">
+       <property name="geometry">
+        <rect>
+         <x>420</x>
+         <y>20</y>
+         <width>181</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="placeholderText">
+        <string>Member Name</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="borrow_search_book_title">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>181</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Book Name</string>
        </property>
       </widget>
       <zorder>borrow_search_btn</zorder>
@@ -1137,6 +1176,9 @@ color:rgb(255, 0, 0);
       <zorder>label_6</zorder>
       <zorder>borrow_search_from</zorder>
       <zorder>label_11</zorder>
+      <zorder>borrows_table</zorder>
+      <zorder>borrow_search_member_name</zorder>
+      <zorder>borrow_search_book_title</zorder>
      </widget>
      <widget class="Line" name="line_6">
       <property name="geometry">
@@ -1384,7 +1426,7 @@ color:rgb(255, 0, 0);
          <x>20</x>
          <y>130</y>
          <width>211</width>
-         <height>381</height>
+         <height>371</height>
         </rect>
        </property>
        <property name="verticalScrollBarPolicy">
@@ -1516,7 +1558,7 @@ color:rgb(255, 0, 0);
       <property name="title">
        <string>Database</string>
       </property>
-      <widget class="QPushButton" name="db_backup">
+      <widget class="QPushButton" name="db_backup_btn">
        <property name="geometry">
         <rect>
          <x>50</x>
@@ -1529,7 +1571,7 @@ color:rgb(255, 0, 0);
         <string>Backup</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="db_restore">
+      <widget class="QPushButton" name="db_restore_btn">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1540,6 +1582,34 @@ color:rgb(255, 0, 0);
        </property>
        <property name="text">
         <string>Restore</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="db_error">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>80</y>
+         <width>701</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+color:rgb(255, 0, 0);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
        </property>
       </widget>
      </widget>
@@ -1584,8 +1654,23 @@ color:rgb(255, 0, 0);
      </widget>
     </widget>
    </widget>
+   <widget class="QPlainTextEdit" name="log_viewer">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>540</y>
+      <width>791</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

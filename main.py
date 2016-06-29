@@ -1,7 +1,9 @@
-import sys, logging, datetime
+import sys, os, logging, datetime
+from shutil import copyfile
 from PyQt4 import QtGui, QtCore
 from data_models import init_db, Admin, Member, Book, Borrow
 from gui import lmslogin, lmsgui, lmsbookedit, lmsmemberedit, lmsadminedit, lmsborrowedit
+from options import MAIN_DIR, DB_PATH, BACKUP_DIR
 
 class LoginWindwo(QtGui.QMainWindow, lmslogin.Ui_Login):
 	def __init__(self, parent=None):
@@ -26,14 +28,24 @@ class LoginWindwo(QtGui.QMainWindow, lmslogin.Ui_Login):
 		else:
 			self.login_error.setText('In correct login')
 
+class QPlainTextEditLogger(logging.Handler):
+	def __init__(self, parent=None):
+		super(QPlainTextEditLogger, self).__init__()
+		self.widget = main_window.log_viewer
 
+	def emit(self, record):
+		msg = self.format(record)
+		self.widget.appendPlainText(msg)
 
+	def write(self, m):
+		pass
 
 class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 	def __init__(self, parent=None):
 		super(MainApp, self).__init__(parent)
 		self.setupUi(self)
 		########## bind buttons action ##########
+		
 		##### books_tab #####
 		### book search ###
 		self.book_search_btn.clicked.connect(self.update_books_tab)
@@ -51,6 +63,7 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.book_add_author.returnPressed.connect(self.book_add_btn.click)
 		self.book_add_publisher.returnPressed.connect(self.book_add_btn.click)
 		self.book_add_copies.returnPressed.connect(self.book_add_btn.click)
+		
 		##### members_tab #####
 		### member search ###
 		self.member_search_btn.clicked.connect(self.update_members_tab)
@@ -67,13 +80,16 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.member_add_mob.returnPressed.connect(self.member_add_btn.click)
 		### member table ###
 		self.members_table.doubleClicked.connect(self.members_table_clicked)
+		
 		##### borrows_tab #####
 		### borrow search ###
 		self.borrow_search_btn.clicked.connect(self.update_borrows_tab)
 		# connect pressing enter in line_edit with button action
 		self.borrow_search_id.returnPressed.connect(self.borrow_search_btn.click)
 		self.borrow_search_book_id.returnPressed.connect(self.borrow_search_btn.click)
+		self.borrow_search_book_title.returnPressed.connect(self.borrow_search_btn.click)
 		self.borrow_search_member_id.returnPressed.connect(self.borrow_search_btn.click)
+		self.borrow_search_member_name.returnPressed.connect(self.borrow_search_btn.click)
 		### borrow add ###
 		self.borrow_add_btn.clicked.connect(self.add_borrow)
 		# connect pressing enter in line_edit with button action
@@ -81,6 +97,7 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.borrow_add_member_id.returnPressed.connect(self.borrow_add_btn.click)
 		### borrow table ###
 		self.borrows_table.doubleClicked.connect(self.borrows_table_clicked)
+		
 		##### admin_tab #####
 		### admin search ###
 		self.admin_search_btn.clicked.connect(self.update_admin_tab)
@@ -100,6 +117,19 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.admin_edit_new_password.returnPressed.connect(self.admin_edit_btn.click)
 		### admin table ###
 		self.admins_table.doubleClicked.connect(self.admins_table_clicked)
+
+		##### options_tab #####
+		self.db_backup_btn.clicked.connect(self.db_backup)
+		self.db_restore_btn.clicked.connect(self.db_restore)
+
+	def config_logging(self):
+		logger = logging.getLogger()
+		logger.setLevel(logging.DEBUG)
+		logTextBox = QPlainTextEditLogger(self)
+		formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+		logTextBox.setFormatter(formatter)
+		logger.addHandler(logTextBox)
+		
 
 	def update_tabs(self):
 		self.update_admin_tab()
@@ -232,8 +262,10 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		bid = int(bid) if bid.isdigit() else 0
 		book_id = unicode(self.borrow_search_book_id.text())
 		book_id = int(book_id) if book_id.isdigit() else 0
+		book_title = unicode(self.borrow_search_book_title.text())
 		member_id = unicode(self.borrow_search_member_id.text())
 		member_id = int(member_id) if member_id.isdigit() else 0
+		member_name = unicode(self.borrow_search_member_name.text())
 		start = self.borrow_search_start.date().toPyDate()
 		if start == datetime.date(2000,1,1): start = None
 		end = self.borrow_search_end.date().toPyDate()
@@ -248,23 +280,27 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		if from_date == datetime.date(2000,1,1): from_date = None
 		to_date = self.borrow_search_to.date().toPyDate()
 		if to_date == datetime.date(2000,1,1): to_date = None
-		borrows = Borrow.get_all(bid=bid, book_id=book_id, member_id=member_id, start=start, end=end, active=active, from_date=from_date, to_date=to_date)
+		borrows = Borrow.get_all(bid=bid, book_id=book_id, book_title=book_title, member_id=member_id, member_name=member_name, start=start, end=end, active=active, from_date=from_date, to_date=to_date)
 		self.borrows_table.clearContents()
 		self.borrows_table.setEditTriggers(QtGui.QTableWidget.NoEditTriggers)
 		self.borrows_table.setRowCount(len(borrows))
-		self.borrows_table.setColumnCount(6)
+		self.borrows_table.setColumnCount(8)
 		for n in range(len(borrows)):
 			self.borrows_table.setItem(n, 0, QtGui.QTableWidgetItem(unicode(borrows[n].id)))
 			self.borrows_table.setItem(n, 1, QtGui.QTableWidgetItem(unicode(borrows[n].book_id)))
-			self.borrows_table.setItem(n, 2, QtGui.QTableWidgetItem(unicode(borrows[n].member_id)))
-			self.borrows_table.setItem(n, 3, QtGui.QTableWidgetItem(unicode(borrows[n].start)))
-			self.borrows_table.setItem(n, 4, QtGui.QTableWidgetItem(unicode(borrows[n].end)))
-			self.borrows_table.setItem(n, 5, QtGui.QTableWidgetItem(unicode(borrows[n].active)))
+			self.borrows_table.setItem(n, 2, QtGui.QTableWidgetItem(borrows[n].book_title))
+			self.borrows_table.setItem(n, 3, QtGui.QTableWidgetItem(unicode(borrows[n].member_id)))
+			self.borrows_table.setItem(n, 4, QtGui.QTableWidgetItem(borrows[n].member_name))
+			self.borrows_table.setItem(n, 5, QtGui.QTableWidgetItem(unicode(borrows[n].start)))
+			self.borrows_table.setItem(n, 6, QtGui.QTableWidgetItem(unicode(borrows[n].end)))
+			self.borrows_table.setItem(n, 7, QtGui.QTableWidgetItem(unicode(borrows[n].active)))
 
 	def add_borrow(self):
 		self.borrow_add_error.setStyleSheet('color: red')
 		book_id = unicode(self.borrow_add_book_id.text())
+		book_id = int(book_id) if book_id.isdigit() else 0
 		member_id = unicode(self.borrow_add_member_id.text())
+		member_id = int(member_id) if member_id.isdigit() else 0
 		start = self.borrow_add_start.date().toPyDate()
 		if start == datetime.date(2000,1,1): start = None
 		end = self.borrow_add_end.date().toPyDate()
@@ -359,6 +395,49 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		msg.setStandardButtons(QtGui.QMessageBox.Ok)
 		return msg.exec_()
 
+	##### Options Tab #####
+	def db_backup(self):
+		self.db_error.setStyleSheet('color: red')
+		new_db_name = 'lms_db_backup_{}.mexdb'.format(datetime.datetime.now().date())
+		default_dst = os.path.join(BACKUP_DIR, new_db_name)
+		dst = QtGui.QFileDialog.getSaveFileName(self, 'Save File', default_dst, "MeX DB files (*.mexdb *.db)")
+		if not dst:
+			self.db_error.setText('No directory specified')
+			return
+		try:
+			copyfile(DB_PATH, dst)
+			self.db_error.setStyleSheet('color: green')
+			self.db_error.setText('database backup completed successfully!')
+			logging.info('database backup completed successfully!')
+		except Exception as e:
+			logging.error(e)
+			self.db_error.setText('database backup failed!')
+
+	def restore_confirm(self):
+		msg = QtGui.QMessageBox()
+		msg.setWindowTitle("WARNING!")
+		msg.setIcon(QtGui.QMessageBox.Warning)
+		msg.setText("Are you sure you want to restore this database ?")
+		msg.setInformativeText("If you aren't sure press no and backup first")
+		msg.setStandardButtons(QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+		return msg.exec_()
+		
+	def db_restore(self):
+		file_name = QtGui.QFileDialog.getOpenFileName(self, 'Open File', BACKUP_DIR, "MeX DB files (*.mexdb *.db)")
+		do_restore = self.restore_confirm() == 16384
+		try:
+			if do_restore:
+				copyfile(file_name, DB_PATH)
+				self.update_tabs()
+				self.db_error.setStyleSheet('color: green')
+				self.db_error.setText('database restore completed successfully!')
+				logging.info('database restore completed successfully!')
+			else:
+				self.db_error.setText('database restore cancelled!')
+		except Exception as e:
+			logging.error(e)
+			self.db_error.setText('database restore failed!')
+
 
 
 class BookWindow(QtGui.QMainWindow, lmsbookedit.Ui_BookEdit):
@@ -369,6 +448,12 @@ class BookWindow(QtGui.QMainWindow, lmsbookedit.Ui_BookEdit):
 		self.book_edit_cancel_btn.clicked.connect(self.close)
 		self.book_edit_btn.clicked.connect(self.edit_book)
 		self.book_delete_btn.clicked.connect(self.delete_book)
+
+		self.book_edit_id.returnPressed.connect(self.book_edit_btn.click)
+		self.book_edit_title.returnPressed.connect(self.book_edit_btn.click)
+		self.book_edit_author.returnPressed.connect(self.book_edit_btn.click)
+		self.book_edit_publisher.returnPressed.connect(self.book_edit_btn.click)
+		self.book_edit_copies.returnPressed.connect(self.book_edit_btn.click)
 
 	def view_book(self, book):
 		self.book_edit_error.setStyleSheet('color: red')
@@ -440,6 +525,12 @@ class MemberWindow(QtGui.QMainWindow, lmsmemberedit.Ui_MemberEdit):
 		self.member_edit_btn.clicked.connect(self.edit_member)
 		self.member_delete_btn.clicked.connect(self.delete_member)
 
+		self.member_edit_id.returnPressed.connect(self.member_edit_btn.click)
+		self.member_edit_name.returnPressed.connect(self.member_edit_btn.click)
+		self.member_edit_email.returnPressed.connect(self.member_edit_btn.click)
+		self.member_edit_mob.returnPressed.connect(self.member_edit_btn.click)
+		self.member_edit_fine.returnPressed.connect(self.member_edit_btn.click)
+
 	def view_member(self, member):
 		self.member_edit_error.setStyleSheet('color: red')
 		self.member_edit_error.setText('')
@@ -510,6 +601,10 @@ class BorrowWindow(QtGui.QMainWindow, lmsborrowedit.Ui_BorrowEdit):
 		self.borrow_edit_cancel_btn.clicked.connect(self.close)
 		self.borrow_edit_btn.clicked.connect(self.edit_borrow)
 		self.borrow_delete_btn.clicked.connect(self.delete_borrow)
+
+		self.borrow_edit_id.returnPressed.connect(self.borrow_edit_btn.click)
+		self.borrow_edit_book_id.returnPressed.connect(self.borrow_edit_btn.click)
+		self.borrow_edit_member_id.returnPressed.connect(self.borrow_edit_btn.click)
 
 	def view_borrow(self, borrow):
 		self.borrow_edit_error.setStyleSheet('color: red')
@@ -583,6 +678,11 @@ class AdminWindow(QtGui.QMainWindow, lmsadminedit.Ui_AdminEdit):
 		self.admin_edit_btn_2.clicked.connect(self.edit_admin)
 		self.admin_delete_btn.clicked.connect(self.delete_admin)
 
+		self.admin_edit_id.returnPressed.connect(self.admin_edit_btn_2.click)
+		self.admin_edit_username_2.returnPressed.connect(self.admin_edit_btn_2.click)
+		self.admin_edit_password.returnPressed.connect(self.admin_edit_btn_2.click)
+
+
 	def view_admin(self, ladmin):
 		self.admin_edit_error_2.setStyleSheet('color: red')
 		self.admin_edit_error_2.setText('')
@@ -652,6 +752,8 @@ if __name__ == '__main__':
 	app = QtGui.QApplication(sys.argv)
 	login_window = LoginWindwo()
 	main_window = MainApp()
+	# config logging
+	main_window.config_logging()
 	book_window = BookWindow()
 	member_window = MemberWindow()
 	borrow_window = BorrowWindow()

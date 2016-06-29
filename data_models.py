@@ -88,7 +88,7 @@ class Admin(Base, BaseModel):
 			return u
 
 	@classmethod
-	def get_all(self, aid=None, username=None):
+	def get_all(self, count=False, aid=None, username=None):
 		filters = []
 		if aid: filters.append(self.id==aid)
 		if username: filters.append(self.username==username)
@@ -97,6 +97,8 @@ class Admin(Base, BaseModel):
 				admins = session.query(self)
 				for f in filters:
 					admins = admins.filter(f)
+				if count:
+					return admins.count()
 				admins = admins.order_by(self.id).all()
 				session.expunge_all()
 				return admins
@@ -209,7 +211,7 @@ class Member(Base ,BaseModel):
 				return []
 
 	@classmethod
-	def get_all(self, mid=None, name=None, email=None, mob=None):
+	def get_all(self, count=False, mid=None, name=None, email=None, mob=None):
 		filters = []
 		if mid: filters.append(self.id==mid)
 		if name: filters.append(self.name.like(u'%{}%'.format(name)))
@@ -220,6 +222,8 @@ class Member(Base ,BaseModel):
 				members = session.query(self)
 				for f in filters:
 					members = members.filter(f)
+				if count:
+					return members.count()
 				members = members.order_by(self.id).all()
 				session.expunge_all()
 				return members
@@ -317,7 +321,7 @@ class Book(Base ,BaseModel):
 				return []
 
 	@classmethod
-	def get_all(self, bid=None, title=None, author=None, publisher=None, available=None):
+	def get_all(self, count=False, bid=None, title=None, author=None, publisher=None, available=None):
 		filters = []
 		if bid: filters.append(self.id==bid)
 		if title: filters.append(self.title.like(u'%{}%'.format(title)))
@@ -329,6 +333,8 @@ class Book(Base ,BaseModel):
 				books = session.query(self)
 				for f in filters:
 					books = books.filter(f)
+				if count:
+					return books.count()
 				books = books.order_by(self.id).all()
 				session.expunge_all()
 				return books
@@ -343,17 +349,23 @@ class Borrow(Base ,BaseModel):
 	# create primary key column as default
 	id = Column(Integer, primary_key=True)
 	book_id = Column(Integer)
+	book_title = Column(String)
 	member_id = Column(Integer)
+	member_name = Column(String)
 	start = Column(Date)
 	end = Column(Date)
 	active = Column(Boolean, default=True)
 
 	@classmethod
 	def add(self, book_id, member_id, start, end, active=True):
-		if not Book.by_id(book_id):
+		book = Book.by_id(book_id)
+		if not book:
 			return 'invalid book id'
-		if not Member.by_id(member_id):
+		book_title = book.title
+		member = Member.by_id(member_id)
+		if not member :
 			return 'invalid member id'
+		member_name = member.name
 		if not isinstance(start, datetime.date):
 			return 'invalid start date'
 		if not isinstance(end, datetime.date):
@@ -362,15 +374,28 @@ class Borrow(Base ,BaseModel):
 			return 'end must be after start'
 		if not isinstance(active, bool):
 			return 'invalid active value'
-		self = self(book_id=book_id, member_id=member_id, start=start, end=end, active=active)
+		active_borrows = self.get_all(count=True, book_id=book.id, active=True)
+		if active_borrows >= book.copies:
+			return 'too many active borrows for this book'
+		self = self(book_id=book_id, book_title=book_title, member_id=member_id, member_name=member_name, start=start, end=end, active=active)
 		return self.put()
 
 
 	def update(self, book_id=None, member_id=None, start=None, end=None, active=True):
-		if book_id and not Book.by_id(book_id):
-			return 'invalid book id'
-		if member_id and not Member.by_id(member_id):
-			return 'invalid member id'
+		book_title = None
+		member_name = None
+		if book_id:
+			book = Book.by_id(book_id)
+			if book:
+				book_title = book.title
+			else:
+				return 'invalid book id'
+		if member_id:
+			member = Member.by_id(member_id)
+			if member:
+				member_name = member.name
+			else:
+				return 'invalid member id'
 		if start and not isinstance(start, datetime.date):
 			return 'invalid start date'
 		if end and not isinstance(end, datetime.date):
@@ -379,7 +404,9 @@ class Borrow(Base ,BaseModel):
 			return 'invalid active value'
 		edits = {}
 		edits['book_id'] = book_id if book_id else self.book_id
+		edits['book_title'] = book_title if book_title else self.book_title
 		edits['member_id'] = member_id if member_id else self.member_id
+		edits['member_name'] = member_name if member_name else self.member_name
 		edits['start'] = start if start else self.start
 		edits['end'] = end if end else self.end
 		if edits['start'] >= edits['end']:
@@ -439,7 +466,7 @@ class Borrow(Base ,BaseModel):
 
 
 	@classmethod
-	def get_all(self, bid=None, book_id=None, member_id=None, start=None, end=None, active=None, from_date=None, to_date=None):
+	def get_all(self, count=False, bid=None, book_id=None, book_title=None, member_id=None, member_name=None, start=None, end=None, active=None, from_date=None, to_date=None):
 		if book_id and not isinstance(book_id, int):
 			return 'invalid book id'
 		if member_id and not isinstance(member_id, int):
@@ -459,7 +486,9 @@ class Borrow(Base ,BaseModel):
 		if start: filters.append(self.start==start)
 		if end: filters.append(self.end==end)
 		if book_id: filters.append(self.book_id==book_id)
+		if book_title: filters.append(self.book_title.like(u'%{}%'.format(book_title)))
 		if member_id: filters.append(self.member_id==member_id)
+		if member_name: filters.append(self.member_name.like(u'%{}%'.format(member_name)))
 		if isinstance(active, bool): filters.append(self.active==active)
 		if from_date: filters.append(self.end >= from_date)
 		if to_date: filters.append(self.start <= to_date)
@@ -468,6 +497,8 @@ class Borrow(Base ,BaseModel):
 				borrows = session.query(self)
 				for f in filters:
 					borrows = borrows.filter(f)
+				if count:
+					return borrows.count()
 				borrows = borrows.order_by(self.id).all()
 				session.expunge_all()
 				return borrows
