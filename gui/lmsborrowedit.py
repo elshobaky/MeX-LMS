@@ -26,6 +26,9 @@ class Ui_BorrowEdit(object):
     def setupUi(self, BorrowEdit):
         BorrowEdit.setObjectName(_fromUtf8("BorrowEdit"))
         BorrowEdit.resize(509, 385)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("img/logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        BorrowEdit.setWindowIcon(icon)
         BorrowEdit.setStyleSheet(_fromUtf8(""))
         self.borrow_edit_book_id = QtGui.QLineEdit(BorrowEdit)
         self.borrow_edit_book_id.setGeometry(QtCore.QRect(150, 100, 221, 32))

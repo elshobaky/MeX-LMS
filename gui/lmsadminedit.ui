@@ -14,6 +14,10 @@
   <property name="windowTitle">
    <string>MeX LMS - Edit Admin</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/logo.png</normaloff>img/logo.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>

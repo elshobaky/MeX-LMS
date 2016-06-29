@@ -26,6 +26,9 @@ class Ui_AdminEdit(object):
     def setupUi(self, AdminEdit):
         AdminEdit.setObjectName(_fromUtf8("AdminEdit"))
         AdminEdit.resize(509, 261)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("img/logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        AdminEdit.setWindowIcon(icon)
         AdminEdit.setStyleSheet(_fromUtf8(""))
         self.admin_edit_username_2 = QtGui.QLineEdit(AdminEdit)
         self.admin_edit_username_2.setGeometry(QtCore.QRect(150, 100, 221, 32))

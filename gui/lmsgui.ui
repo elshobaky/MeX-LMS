@@ -14,6 +14,10 @@
   <property name="windowTitle">
    <string>MeX LMS</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/logo.png</normaloff>img/logo.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="main_tabs">
     <property name="geometry">
@@ -25,7 +29,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="books_tab">
      <attribute name="icon">
@@ -1617,14 +1621,45 @@ color:rgb(255, 0, 0);
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>370</y>
+        <y>260</y>
         <width>751</width>
-        <height>131</height>
+        <height>241</height>
        </rect>
       </property>
       <property name="title">
        <string>About</string>
       </property>
+      <widget class="QTextBrowser" name="textBrowser">
+       <property name="geometry">
+        <rect>
+         <x>15</x>
+         <y>30</y>
+         <width>731</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextBrowser {
+border: None
+}</string>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;MeX Library Manegement System&lt;/span&gt; is free open source software developed by: &lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial,helvetica,sans-serif'; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Mahmoud Elshobaky&lt;/span&gt;&lt;span style=&quot; font-family:'arial,helvetica,clean,sans-serif'; font-size:10pt; font-weight:600; color:#808080;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-weight:600; color:#ff6600; background-color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; font-weight:600; color:#ff6600; background-color:#ffffff; vertical-align:sub;&quot;&gt;| &lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;&quot;&gt;e-mail&lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#808080; background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#808080; background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;mailto:mahmoud.elshobaky@gmail.com&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;mahmoud.elshobaky@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; font-weight:600; color:#ff6600; background-color:#ffffff; vertical-align:sub;&quot;&gt;|&lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;&quot;&gt; LinkedIn : &lt;/span&gt;&lt;a href=&quot;https://www.linkedin.com/in/mahmoudelshobaky&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;mahmoudelshobaky&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; font-weight:600; color:#ff6600; background-color:#ffffff; vertical-align:sub;&quot;&gt;|&lt;/span&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;&quot;&gt; GitHub : &lt;/span&gt;&lt;a href=&quot;https://github.com/elshobaky&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;elshobaky&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'verdana,sans-serif'; text-decoration: underline; color:#1155cc;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'verdana,sans-serif'; font-size:9pt; color:#00aa7f; background-color:#ffffff;&quot;&gt;*For developers : feel free to contibute to &lt;/span&gt;&lt;a href=&quot;https://github.com/elshobaky/MeX-LMS&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; text-decoration: underline; color:#00aa00;&quot;&gt;MeX-LMS project on GitHub&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
      <widget class="Line" name="line_7">
       <property name="geometry">
@@ -1643,7 +1678,7 @@ color:rgb(255, 0, 0);
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>350</y>
+        <y>240</y>
         <width>781</width>
         <height>20</height>
        </rect>

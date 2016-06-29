@@ -26,6 +26,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(786, 587)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("img/logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.main_tabs = QtGui.QTabWidget(self.centralwidget)
@@ -130,9 +133,9 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShape(QtGui.QFrame.HLine)
         self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_2.setObjectName(_fromUtf8("line_2"))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("img/book.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.main_tabs.addTab(self.books_tab, icon, _fromUtf8(""))
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("img/book.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_tabs.addTab(self.books_tab, icon1, _fromUtf8(""))
         self.members_tab = QtGui.QWidget()
         self.members_tab.setObjectName(_fromUtf8("members_tab"))
         self.groupBox_9 = QtGui.QGroupBox(self.members_tab)
@@ -217,9 +220,9 @@ class Ui_MainWindow(object):
         self.line_3.setFrameShape(QtGui.QFrame.VLine)
         self.line_3.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_3.setObjectName(_fromUtf8("line_3"))
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("img/member.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.main_tabs.addTab(self.members_tab, icon1, _fromUtf8(""))
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("img/member.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_tabs.addTab(self.members_tab, icon2, _fromUtf8(""))
         self.borrows_tab = QtGui.QWidget()
         self.borrows_tab.setObjectName(_fromUtf8("borrows_tab"))
         self.groupBox_10 = QtGui.QGroupBox(self.borrows_tab)
@@ -412,9 +415,9 @@ class Ui_MainWindow(object):
         self.line_6.setFrameShape(QtGui.QFrame.HLine)
         self.line_6.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_6.setObjectName(_fromUtf8("line_6"))
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8("img/borrow.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.main_tabs.addTab(self.borrows_tab, icon2, _fromUtf8(""))
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(_fromUtf8("img/borrow.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_tabs.addTab(self.borrows_tab, icon3, _fromUtf8(""))
         self.admin_tab = QtGui.QWidget()
         self.admin_tab.setObjectName(_fromUtf8("admin_tab"))
         self.groupBox_5 = QtGui.QGroupBox(self.admin_tab)
@@ -521,9 +524,9 @@ class Ui_MainWindow(object):
         self.line_5.setFrameShape(QtGui.QFrame.HLine)
         self.line_5.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_5.setObjectName(_fromUtf8("line_5"))
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(_fromUtf8("img/admin.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.main_tabs.addTab(self.admin_tab, icon3, _fromUtf8(""))
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(_fromUtf8("img/admin.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_tabs.addTab(self.admin_tab, icon4, _fromUtf8(""))
         self.options_tab = QtGui.QWidget()
         self.options_tab.setObjectName(_fromUtf8("options_tab"))
         self.groupBox_11 = QtGui.QGroupBox(self.options_tab)
@@ -549,21 +552,28 @@ class Ui_MainWindow(object):
         self.db_error.setTextFormat(QtCore.Qt.RichText)
         self.db_error.setObjectName(_fromUtf8("db_error"))
         self.groupBox_12 = QtGui.QGroupBox(self.options_tab)
-        self.groupBox_12.setGeometry(QtCore.QRect(10, 370, 751, 131))
+        self.groupBox_12.setGeometry(QtCore.QRect(10, 260, 751, 241))
         self.groupBox_12.setObjectName(_fromUtf8("groupBox_12"))
+        self.textBrowser = QtGui.QTextBrowser(self.groupBox_12)
+        self.textBrowser.setGeometry(QtCore.QRect(15, 30, 731, 171))
+        self.textBrowser.setStyleSheet(_fromUtf8("QTextBrowser {\n"
+"border: None\n"
+"}"))
+        self.textBrowser.setOpenExternalLinks(True)
+        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
         self.line_7 = QtGui.QFrame(self.options_tab)
         self.line_7.setGeometry(QtCore.QRect(0, 130, 781, 20))
         self.line_7.setFrameShape(QtGui.QFrame.HLine)
         self.line_7.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_7.setObjectName(_fromUtf8("line_7"))
         self.line_8 = QtGui.QFrame(self.options_tab)
-        self.line_8.setGeometry(QtCore.QRect(0, 350, 781, 20))
+        self.line_8.setGeometry(QtCore.QRect(0, 240, 781, 20))
         self.line_8.setFrameShape(QtGui.QFrame.HLine)
         self.line_8.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_8.setObjectName(_fromUtf8("line_8"))
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(_fromUtf8("img/options.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.main_tabs.addTab(self.options_tab, icon4, _fromUtf8(""))
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(_fromUtf8("img/options.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_tabs.addTab(self.options_tab, icon5, _fromUtf8(""))
         self.log_viewer = QtGui.QPlainTextEdit(self.centralwidget)
         self.log_viewer.setGeometry(QtCore.QRect(0, 540, 791, 41))
         self.log_viewer.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
@@ -572,7 +582,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.main_tabs.setCurrentIndex(4)
+        self.main_tabs.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -688,5 +698,16 @@ class Ui_MainWindow(object):
         self.db_backup_btn.setText(_translate("MainWindow", "Backup", None))
         self.db_restore_btn.setText(_translate("MainWindow", "Restore", None))
         self.groupBox_12.setTitle(_translate("MainWindow", "About", None))
+        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">MeX Library Manegement System</span> is free open source software developed by: </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial,helvetica,sans-serif\'; font-size:10pt; font-weight:600; color:#000000;\">Mahmoud Elshobaky</span><span style=\" font-family:\'arial,helvetica,clean,sans-serif\'; font-size:10pt; font-weight:600; color:#808080;\"> </span><span style=\" font-family:\'verdana,sans-serif\'; font-weight:600; color:#ff6600; background-color:#ffffff;\"><br /></span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; font-weight:600; color:#ff6600; background-color:#ffffff; vertical-align:sub;\">| </span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;\">e-mail</span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#808080; background-color:#ffffff;\"> </span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;\">:</span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#808080; background-color:#ffffff;\"> </span><a href=\"mailto:mahmoud.elshobaky@gmail.com\"><span style=\" font-size:9pt; text-decoration: underline; color:#0000ff;\">mahmoud.elshobaky@gmail.com</span></a></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; font-weight:600; color:#ff6600; background-color:#ffffff; vertical-align:sub;\">|</span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;\"> LinkedIn : </span><a href=\"https://www.linkedin.com/in/mahmoudelshobaky\"><span style=\" font-size:9pt; text-decoration: underline; color:#0000ff;\">mahmoudelshobaky</span></a></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; font-weight:600; color:#ff6600; background-color:#ffffff; vertical-align:sub;\">|</span><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#808080; background-color:#ffffff; vertical-align:sub;\"> GitHub : </span><a href=\"https://github.com/elshobaky\"><span style=\" font-size:9pt; text-decoration: underline; color:#0000ff;\">elshobaky</span></a></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'verdana,sans-serif\'; text-decoration: underline; color:#1155cc;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'verdana,sans-serif\'; font-size:9pt; color:#00aa7f; background-color:#ffffff;\">*For developers : feel free to contibute to </span><a href=\"https://github.com/elshobaky/MeX-LMS\"><span style=\" font-size:9pt; font-weight:600; text-decoration: underline; color:#00aa00;\">MeX-LMS project on GitHub</span></a></p></body></html>", None))
         self.main_tabs.setTabText(self.main_tabs.indexOf(self.options_tab), _translate("MainWindow", "Options", None))
 

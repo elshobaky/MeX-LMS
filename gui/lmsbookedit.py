@@ -26,6 +26,9 @@ class Ui_BookEdit(object):
     def setupUi(self, BookEdit):
         BookEdit.setObjectName(_fromUtf8("BookEdit"))
         BookEdit.resize(509, 385)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("img/logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        BookEdit.setWindowIcon(icon)
         BookEdit.setStyleSheet(_fromUtf8(""))
         self.book_edit_title = QtGui.QLineEdit(BookEdit)
         self.book_edit_title.setGeometry(QtCore.QRect(150, 100, 221, 32))

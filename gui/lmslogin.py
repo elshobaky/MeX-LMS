@@ -26,6 +26,9 @@ class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName(_fromUtf8("Login"))
         Login.resize(321, 218)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("img/logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Login.setWindowIcon(icon)
         Login.setStyleSheet(_fromUtf8(""))
         self.login_username = QtGui.QLineEdit(Login)
         self.login_username.setGeometry(QtCore.QRect(10, 30, 301, 51))
