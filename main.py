@@ -1,9 +1,10 @@
-import sys, os, logging, datetime
+import sys, os, logging, datetime, csv
 from shutil import copyfile
 from PyQt4 import QtGui, QtCore
 from data_models import init_db, Admin, Member, Book, Borrow
 from gui import lmslogin, lmsgui, lmsbookedit, lmsmemberedit, lmsadminedit, lmsborrowedit
-from options import MAIN_DIR, DB_PATH, BACKUP_DIR
+from options import MAIN_DIR, DB_PATH, BACKUP_DIR, EXPORT_DIR
+from assets.unicode_csv import UnicodeWriter
 
 class LoginWindwo(QtGui.QMainWindow, lmslogin.Ui_Login):
 	def __init__(self, parent=None):
@@ -121,6 +122,7 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		##### options_tab #####
 		self.db_backup_btn.clicked.connect(self.db_backup)
 		self.db_restore_btn.clicked.connect(self.db_restore)
+		self.db_csv_export_btn.clicked.connect(self.db_csv_export)
 
 	def config_logging(self):
 		logger = logging.getLogger()
@@ -437,6 +439,54 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		except Exception as e:
 			logging.error(e)
 			self.db_error.setText('database restore failed!')
+
+	def db_csv_export(self):
+		db_tables = []
+		file_names = []
+		export_dir = EXPORT_DIR
+		table = str(self.db_csv_export_table.currentText())
+		if table == 'Entire Database':
+			db_tables = [Book, Member, Borrow, Admin]
+		elif table == 'Books':
+			db_tables.append(Book)
+		elif table == 'Members':
+			db_tables.append(Member)
+		elif table == 'Borrows':
+			db_tables.append(Borrow)
+		elif table == 'Admins':
+			db_tables.append(Admin)
+		if len(db_tables) == 1:
+			file_name = '{}_{}.csv'.format(table,datetime.datetime.now().date())
+			default_dst = os.path.join(EXPORT_DIR, file_name)
+			dst = QtGui.QFileDialog.getSaveFileName(self, 'Save File', default_dst, "csv files (*.csv)")
+			export_dir, file_name = os.path.split(str(dst))
+			file_names = [file_name]
+		elif len(db_tables) > 1:
+			export_dir = QtGui.QFileDialog.getExistingDirectory(
+				    self,
+				    "Select a folder",
+				    EXPORT_DIR,
+				    QtGui.QFileDialog.ShowDirsOnly
+				    )
+			export_dir = str(export_dir)
+			file_names = ['Books_{}.csv', 'Members_{}.csv', 'Borrows_{}.csv', 'Admins_{}.csv']
+			file_names = [x.format(datetime.datetime.now().date()) for x in file_names]
+		logging.info('exporting databse to csv files ......')
+		for n in range(len(db_tables)):
+			records = db_tables[n].get_all()
+			file_path = os.path.join(export_dir, file_names[n])
+			with open(file_path, 'wb') as outfile:
+				outcsv = UnicodeWriter(outfile,quoting=csv.QUOTE_ALL)
+				outcsv.writerow([column.name for column in db_tables[n].__mapper__.columns])
+				for curr in records:
+					row = []
+					for column in db_tables[n].__mapper__.columns:
+						row.append(unicode(getattr(curr, column.name)))
+					outcsv.writerow(row)
+		self.db_error.setStyleSheet('color: green')
+		self.db_error.setText('Export completed successfully!')
+		logging.info('Database export completed')
+		
 
 
 

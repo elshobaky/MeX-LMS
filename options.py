@@ -17,8 +17,10 @@ MAIN_DIR  = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(MAIN_DIR, 'mexlms.db')
 DOC_DIR = os.path.expanduser('~/Documents/MeX LMS')
 BACKUP_DIR = os.path.expanduser('~/Documents/MeX LMS/Backups')
+EXPORT_DIR = os.path.expanduser('~/Documents/MeX LMS/Exports')
 try:
 	os.mkdir(DOC_DIR)
 	os.mkdir(BACKUP_DIR)
+	os.mkdir(EXPORT_DIR)
 except Exception as e:
 	logging.error(e)
