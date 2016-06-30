@@ -1,4 +1,4 @@
-## MeX Library Management System 
+## MeX Library Management System
 MeX-LMS is a free open source software for controlling libraries specially those for borrowing purposes.
 - the default admin info (username : admin, password: admin)
 - from main tabs you can easily add/edit items (Books, Member, Borrow, Admin).
