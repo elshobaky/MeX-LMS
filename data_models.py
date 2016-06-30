@@ -510,7 +510,7 @@ class Borrow(Base ,BaseModel):
 
 	@classmethod
 	def calc_fines(self):
-		logging.info('calclating members fines .....')
+		logging.info('calculating members fines .....')
 		today = datetime.datetime.now().date()
 		filters = [self.active==True]
 		filters.append(self.end < today)
