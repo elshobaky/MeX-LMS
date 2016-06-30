@@ -29,7 +29,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="books_tab">
      <attribute name="icon">
@@ -45,7 +45,7 @@
         <x>10</x>
         <y>0</y>
         <width>761</width>
-        <height>91</height>
+        <height>101</height>
        </rect>
       </property>
       <property name="title">
@@ -181,7 +181,7 @@ color:rgb(255, 0, 0);
        <rect>
         <x>0</x>
         <y>170</y>
-        <width>611</width>
+        <width>641</width>
         <height>341</height>
        </rect>
       </property>
@@ -197,9 +197,6 @@ color:rgb(255, 0, 0);
       <property name="verticalScrollMode">
        <enum>QAbstractItemView::ScrollPerItem</enum>
       </property>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
       <column>
        <property name="text">
         <string>ID</string>
@@ -237,7 +234,7 @@ color:rgb(255, 0, 0);
         <x>10</x>
         <y>110</y>
         <width>761</width>
-        <height>51</height>
+        <height>61</height>
        </rect>
       </property>
       <property name="title">
@@ -480,9 +477,9 @@ color:rgb(255, 0, 0);
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>80</y>
-        <width>251</width>
+        <x>550</x>
+        <y>70</y>
+        <width>221</width>
         <height>421</height>
        </rect>
       </property>
@@ -494,7 +491,7 @@ color:rgb(255, 0, 0);
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>241</width>
+         <width>201</width>
          <height>32</height>
         </rect>
        </property>
@@ -510,7 +507,7 @@ color:rgb(255, 0, 0);
         <rect>
          <x>10</x>
          <y>70</y>
-         <width>241</width>
+         <width>201</width>
          <height>32</height>
         </rect>
        </property>
@@ -523,7 +520,7 @@ color:rgb(255, 0, 0);
         <rect>
          <x>10</x>
          <y>110</y>
-         <width>241</width>
+         <width>201</width>
          <height>32</height>
         </rect>
        </property>
@@ -539,7 +536,7 @@ color:rgb(255, 0, 0);
         <rect>
          <x>10</x>
          <y>150</y>
-         <width>241</width>
+         <width>201</width>
          <height>32</height>
         </rect>
        </property>
@@ -553,7 +550,7 @@ color:rgb(255, 0, 0);
       <widget class="QPushButton" name="member_search_btn">
        <property name="geometry">
         <rect>
-         <x>80</x>
+         <x>50</x>
          <y>190</y>
          <width>101</width>
          <height>31</height>
@@ -572,7 +569,7 @@ color:rgb(255, 0, 0);
        <rect>
         <x>0</x>
         <y>80</y>
-        <width>511</width>
+        <width>541</width>
         <height>421</height>
        </rect>
       </property>
@@ -585,9 +582,6 @@ color:rgb(255, 0, 0);
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
       <column>
        <property name="text">
         <string>ID</string>
@@ -630,7 +624,7 @@ color:rgb(255, 0, 0);
      <widget class="Line" name="line_3">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>540</x>
         <y>70</y>
         <width>16</width>
         <height>441</height>
@@ -655,7 +649,7 @@ color:rgb(255, 0, 0);
         <x>10</x>
         <y>0</y>
         <width>761</width>
-        <height>91</height>
+        <height>101</height>
        </rect>
       </property>
       <property name="title">
@@ -836,9 +830,6 @@ color:rgb(255, 0, 0);
       <property name="verticalScrollMode">
        <enum>QAbstractItemView::ScrollPerItem</enum>
       </property>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
       <column>
        <property name="text">
         <string>ID</string>
@@ -886,7 +877,7 @@ color:rgb(255, 0, 0);
         <x>0</x>
         <y>110</y>
         <width>761</width>
-        <height>131</height>
+        <height>141</height>
        </rect>
       </property>
       <property name="title">
@@ -1116,7 +1107,7 @@ color:rgb(255, 0, 0);
       <widget class="QLabel" name="label_11">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>10</x>
          <y>100</y>
          <width>111</width>
          <height>31</height>
@@ -1124,7 +1115,7 @@ color:rgb(255, 0, 0);
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -1162,27 +1153,6 @@ color:rgb(255, 0, 0);
         <string>Book Name</string>
        </property>
       </widget>
-      <zorder>borrow_search_btn</zorder>
-      <zorder>borrow_search_id</zorder>
-      <zorder>borrow_search_active</zorder>
-      <zorder>borrow_search_not_active</zorder>
-      <zorder>borrow_add_book_id</zorder>
-      <zorder>borrow_add_member_id</zorder>
-      <zorder>borrow_add_start</zorder>
-      <zorder>borrow_search_book_id</zorder>
-      <zorder>borrow_search_member_id</zorder>
-      <zorder>borrow_search_start</zorder>
-      <zorder>label_3</zorder>
-      <zorder>borrow_search_end</zorder>
-      <zorder>label_4</zorder>
-      <zorder>borrow_search_to</zorder>
-      <zorder>label_5</zorder>
-      <zorder>label_6</zorder>
-      <zorder>borrow_search_from</zorder>
-      <zorder>label_11</zorder>
-      <zorder>borrows_table</zorder>
-      <zorder>borrow_search_member_name</zorder>
-      <zorder>borrow_search_book_title</zorder>
      </widget>
      <widget class="Line" name="line_6">
       <property name="geometry">
@@ -1417,7 +1387,7 @@ color:rgb(255, 0, 0);
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>251</width>
+        <width>261</width>
         <height>511</height>
        </rect>
       </property>
@@ -1427,9 +1397,9 @@ color:rgb(255, 0, 0);
       <widget class="QTableWidget" name="admins_table">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>10</x>
          <y>130</y>
-         <width>211</width>
+         <width>241</width>
          <height>371</height>
         </rect>
        </property>
@@ -1442,9 +1412,6 @@ color:rgb(255, 0, 0);
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectRows</enum>
        </property>
-       <attribute name="verticalHeaderVisible">
-        <bool>false</bool>
-       </attribute>
        <column>
         <property name="text">
          <string>ID</string>
@@ -1462,7 +1429,7 @@ color:rgb(255, 0, 0);
          <x>10</x>
          <y>30</y>
          <width>311</width>
-         <height>51</height>
+         <height>61</height>
         </rect>
        </property>
        <property name="title">
@@ -1487,7 +1454,7 @@ color:rgb(255, 0, 0);
        <widget class="QLineEdit" name="admin_search_username">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>90</x>
           <y>20</y>
           <width>141</width>
           <height>32</height>
@@ -1556,7 +1523,7 @@ color:rgb(255, 0, 0);
         <x>10</x>
         <y>0</y>
         <width>761</width>
-        <height>131</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="title">
@@ -1694,10 +1661,10 @@ color:rgb(255, 0, 0);
      <widget class="QGroupBox" name="groupBox_12">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>260</y>
+        <x>0</x>
+        <y>300</y>
         <width>751</width>
-        <height>241</height>
+        <height>201</height>
        </rect>
       </property>
       <property name="title">
@@ -1709,7 +1676,7 @@ color:rgb(255, 0, 0);
          <x>15</x>
          <y>30</y>
          <width>731</width>
-         <height>171</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -1739,7 +1706,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>130</y>
+        <y>110</y>
         <width>781</width>
         <height>20</height>
        </rect>
@@ -1752,7 +1719,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>240</y>
+        <y>280</y>
         <width>781</width>
         <height>20</height>
        </rect>
@@ -1760,6 +1727,86 @@ p, li { white-space: pre-wrap; }
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_13">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>751</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Other Options</string>
+      </property>
+      <widget class="QLineEdit" name="options_edit_fine">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>30</y>
+         <width>113</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Fine Per Day</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fine unit (EGP/daylate):</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="options_edit_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>92</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="options_edit_error">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>130</y>
+         <width>631</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+color:rgb(255, 0, 0);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>

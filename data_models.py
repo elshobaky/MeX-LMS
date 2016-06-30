@@ -2,6 +2,7 @@ import random, hashlib, logging, datetime
 from string import letters
 from db.base import *
 from assets.validators import valid_name, valid_phone, valid_email
+from options import FINE
 
 def make_salt(length = 5):
     return ''.join(random.choice(letters) for x in xrange(length))
@@ -230,6 +231,7 @@ class Member(Base ,BaseModel):
 			except Exception as e:
 				logging.error(e)
 				return []
+
 
 
 class Book(Base ,BaseModel):
@@ -505,6 +507,36 @@ class Borrow(Base ,BaseModel):
 			except Exception as e:
 				logging.error(e)
 				return []
+
+	@classmethod
+	def calc_fines(self):
+		logging.info('calclating members fines .....')
+		today = datetime.datetime.now().date()
+		filters = [self.active==True]
+		filters.append(self.end < today)
+		borrows = []
+		with self().session() as session :
+			try:
+			 	borrows = session.query(self)
+			 	for f in filters:
+			 		borrows = borrows.filter(f)
+			 	borrows = borrows.all()
+			 	session.expunge_all()
+			except Exception as e:
+			 	logging.error(e)
+			 	return
+		for b in borrows:
+			try:
+				fine = today - b.end
+				fine = fine.days * FINE
+				member = Member.by_id(b.member_id)
+				#fine += int(member.fine) if member.fine.isdigit() else 0
+				member.update(fine=fine)
+			except Exception as e:
+				logging.error(e)
+		logging.info('members fines calculated')
+
+
 
 
 if __name__ == '__main__':

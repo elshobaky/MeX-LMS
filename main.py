@@ -1,4 +1,4 @@
-import sys, os, logging, datetime, csv
+import sys, os, logging, datetime, csv, threading, json
 from shutil import copyfile
 from PyQt4 import QtGui, QtCore
 from data_models import init_db, Admin, Member, Book, Borrow
@@ -123,6 +123,8 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.db_backup_btn.clicked.connect(self.db_backup)
 		self.db_restore_btn.clicked.connect(self.db_restore)
 		self.db_csv_export_btn.clicked.connect(self.db_csv_export)
+		self.options_edit_btn.clicked.connect(self.edit_options)
+		self.options_edit_fine.returnPressed.connect(self.options_edit_btn.click)
 
 	def config_logging(self):
 		logger = logging.getLogger()
@@ -440,6 +442,25 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 			logging.error(e)
 			self.db_error.setText('database restore failed!')
 
+	def edit_options(self):
+		self.options_edit_error.setStyleSheet('color: red')
+		fine = str(self.options_edit_fine.text())
+		try:
+			fine = float(fine)
+		except Exception as e:
+			logging.error(e)
+			self.options_edit_error.setText('invlid fine')
+			return
+		with open('options.json', 'r') as options_in:
+			options = json.loads(options_in.read())
+		options['fine'] = fine
+		options = json.dumps(options)
+		with open('options.json', 'w') as options_out:
+			options_out.write(options)
+		self.options_edit_error.setStyleSheet('color: green')
+		self.options_edit_error.setText('Options saved and will take effect in next start up')
+		logging.info('options updated')
+
 	def db_csv_export(self):
 		db_tables = []
 		file_names = []
@@ -476,7 +497,7 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 			records = db_tables[n].get_all()
 			file_path = os.path.join(export_dir, file_names[n])
 			with open(file_path, 'wb') as outfile:
-				outcsv = UnicodeWriter(outfile,quoting=csv.QUOTE_ALL)
+				outcsv = UnicodeWriter(outfile,delimiter=';',quoting=csv.QUOTE_ALL)
 				outcsv.writerow([column.name for column in db_tables[n].__mapper__.columns])
 				for curr in records:
 					row = []
@@ -786,6 +807,16 @@ class AdminWindow(QtGui.QMainWindow, lmsadminedit.Ui_AdminEdit):
 			self.close()
 
 
+class CronThread(threading.Thread):
+	def __init__(self, threadID):
+		threading.Thread.__init__(self)
+		self.threadID = threadID
+
+	def run(self):
+		Borrow.calc_fines()
+		main_window.update_members_tab()
+
+
 def check_run_first_time_run():
 	try:
 		init_db()
@@ -808,5 +839,7 @@ if __name__ == '__main__':
 	member_window = MemberWindow()
 	borrow_window = BorrowWindow()
 	admin_window = AdminWindow()
+	# cron jobs
+	CronThread('mls-cron').start()
 	login_window.show()
 	app.exec_()
