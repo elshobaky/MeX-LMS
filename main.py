@@ -3,7 +3,7 @@ from shutil import copyfile
 from PyQt4 import QtGui, QtCore
 from data_models import init_db, Admin, Member, Book, Borrow
 from gui import lmslogin, lmsgui, lmsbookedit, lmsmemberedit, lmsadminedit, lmsborrowedit
-from options import MAIN_DIR, DB_PATH, BACKUP_DIR, EXPORT_DIR
+from options import MAIN_DIR, DB_PATH, BACKUP_DIR, EXPORT_DIR, FINE
 from assets.unicode_csv import UnicodeWriter
 
 class LoginWindwo(QtGui.QMainWindow, lmslogin.Ui_Login):
@@ -140,6 +140,7 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		self.update_books_tab()
 		self.update_members_tab()
 		self.update_borrows_tab()
+		self.update_options_tab()
 
 	##### Books Tab #####
 	def update_books_tab(self):
@@ -400,6 +401,9 @@ class MainApp(QtGui.QMainWindow, lmsgui.Ui_MainWindow):
 		return msg.exec_()
 
 	##### Options Tab #####
+	def update_options_tab(self):
+		self.options_edit_fine.setText(str(FINE))
+
 	def db_backup(self):
 		self.db_error.setStyleSheet('color: red')
 		new_db_name = 'lms_db_backup_{}.mexdb'.format(datetime.datetime.now().date())
