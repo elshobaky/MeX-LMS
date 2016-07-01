@@ -42,7 +42,7 @@ class Ui_Login(object):
         self.login_btn.setAutoDefault(True)
         self.login_btn.setObjectName(_fromUtf8("login_btn"))
         self.label = QtGui.QLabel(Login)
-        self.label.setGeometry(QtCore.QRect(90, 0, 141, 31))
+        self.label.setGeometry(QtCore.QRect(80, 0, 201, 31))
         font = QtGui.QFont()
         font.setPointSize(18)
         font.setBold(True)
