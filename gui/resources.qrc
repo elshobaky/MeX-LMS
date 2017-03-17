@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="/img">
+    <file>img/maktba.png</file>
+    <file>img/book.png</file>
+    <file>img/borrow.png</file>
+    <file>img/logo.png</file>
+    <file>img/member.png</file>
+    <file>img/home.ico</file>
+    <file>img/icon.png</file>
+    <file>img/admin.png</file>
+    <file>img/options.png</file>
+  </qresource>
+</RCC>

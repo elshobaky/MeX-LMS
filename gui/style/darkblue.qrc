@@ -1,0 +1,46 @@
+<RCC>
+  <qresource prefix="qss_icons">
+    <file>darkbluerc/up_arrow_disabled.png</file>
+    <file>darkbluerc/Hmovetoolbar.png</file>
+    <file>darkbluerc/stylesheet-branch-end.png</file>
+    <file>darkbluerc/branch_closed-on.png</file>
+    <file>darkbluerc/stylesheet-vline.png</file>
+    <file>darkbluerc/branch_closed.png</file>
+    <file>darkbluerc/branch_open-on.png</file>
+    <file>darkbluerc/transparent.png</file>
+    <file>darkbluerc/right_arrow_disabled.png</file>
+    <file>darkbluerc/sizegrip.png</file>
+    <file>darkbluerc/close.png</file>
+    <file>darkbluerc/close-hover.png</file>
+    <file>darkbluerc/close-pressed.png</file>
+    <file>darkbluerc/down_arrow.png</file>
+    <file>darkbluerc/Vmovetoolbar.png</file>
+    <file>darkbluerc/left_arrow.png</file>
+    <file>darkbluerc/stylesheet-branch-more.png</file>
+    <file>darkbluerc/up_arrow.png</file>
+    <file>darkbluerc/right_arrow.png</file>
+    <file>darkbluerc/left_arrow_disabled.png</file>
+    <file>darkbluerc/Hsepartoolbar.png</file>
+    <file>darkbluerc/branch_open.png</file>
+    <file>darkbluerc/Vsepartoolbar.png</file>
+    <file>darkbluerc/down_arrow_disabled.png</file>
+    <file>darkbluerc/undock.png</file>
+    <file>darkbluerc/checkbox_checked_disabled.png</file>
+    <file>darkbluerc/checkbox_checked_focus.png</file>
+    <file>darkbluerc/checkbox_checked.png</file>
+    <file>darkbluerc/checkbox_indeterminate.png</file>
+    <file>darkbluerc/checkbox_indeterminate_focus.png</file>
+    <file>darkbluerc/checkbox_unchecked_disabled.png</file>
+    <file>darkbluerc/checkbox_unchecked_focus.png</file>
+    <file>darkbluerc/checkbox_unchecked.png</file>
+    <file>darkbluerc/radio_checked_disabled.png</file>
+    <file>darkbluerc/radio_checked_focus.png</file>
+    <file>darkbluerc/radio_checked.png</file>
+    <file>darkbluerc/radio_unchecked_disabled.png</file>
+    <file>darkbluerc/radio_unchecked_focus.png</file>
+    <file>darkbluerc/radio_unchecked.png</file>
+  </qresource>
+  <qresource prefix="qdarkstyle">
+      <file>darkblue.qss</file>
+  </qresource>
+</RCC>

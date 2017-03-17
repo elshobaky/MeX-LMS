@@ -1,0 +1,7 @@
+<RCC>
+  <qresource>
+    <file>darkorangerc/checkbox.png</file>
+    <file alias="down_arrow.png">darkorangerc/down_arrow.png</file>
+    <file>darkorangerc/handle.png</file>
+  </qresource>
+</RCC>
