@@ -1,11 +1,22 @@
 ## MeX Library Management System
 MeX-LMS is a free open source software for controlling libraries specially those for borrowing purposes.
-- the default admin info (username : admin, password: admin)
-- from main tabs you can easily add/edit items (Books, Member, Borrow, Admin).
-- in Admin tab you can add admin  or change password.
-- also you can backup/restore database easily in options tab or export it to .csv / excel sheets.
 
-##### for more details review the following screenshots:
+# what's new :
+- Add support for internationalization (multiple language support)
+- Include translaions in Arabic language.
+- Add Support fot multiple styles.
+- Add support for cloud backup on google drive.
+- GUI improvements , more responsive.
+- Add support for book categories.
+
+# Basic Features
+- the default admin info (username : admin, password: admin)
+- from main tabs you can easily add/edit items (Books, Categories, Member, Borrow, Admin).
+- in Setings -> Admin tab you can add admin  or change password.
+- in Setings -> Backup tab you can backup/restore database easily or export it to .csv / excel sheets.
+- in in Setings -> Options tab you can configure the application languae, style and other parameters.
+
+# screenshots :
 
 ![0](https://cloud.githubusercontent.com/assets/8248759/16490514/55b0986a-3eda-11e6-9023-a6ac7e4adc70.png)
 ![1](https://cloud.githubusercontent.com/assets/8248759/16490523/5a9a6e14-3eda-11e6-9ac3-b36b7b094af2.png)
