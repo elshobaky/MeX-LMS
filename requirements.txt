@@ -1,2 +1,4 @@
 PyQt4
 sqlAlchemy
+pydrive
+jinja2
