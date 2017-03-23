@@ -616,6 +616,12 @@ class MainWindow(QtGui.QMainWindow, maingui.Ui_MainWindow):
         self.member_add_error.setStyleSheet('color: green')
         self.member_add_error.setText(self.tr('Member Added'))
         self.update_members_tab()
+        
+        # clear member data after correct save.
+        self.member_add_name.setText('')
+        self.member_add_email.setText('')
+        self.member_add_mob.setText('')
+        self.member_add_note.clear()
 
     def members_table_clicked(self):
         index = self.members_table.selectedIndexes()[0]
