@@ -859,6 +859,10 @@ class MainWindow(QtGui.QMainWindow, maingui.Ui_MainWindow):
         self.borrows_table.horizontalHeader().setStretchLastSection(True)
         self.borrows_table.doubleClicked.connect(self.borrows_table_clicked)
 
+        members = Member.get()
+        for member in members:
+            self.borrow_member.addItem(member.name)
+
     def update_borrows_tab(self):
         borrows = []
         bid = unicode(self.borrow_search_id.text())
@@ -930,6 +934,14 @@ class MainWindow(QtGui.QMainWindow, maingui.Ui_MainWindow):
         member_id = unicode(self.borrow_add_member_id.text())
         member_id = int(member_id) if member_id.isdigit() else 0
         start = self.borrow_add_start.date().toPyDate()
+
+        # giving up on manually entering id.
+        # borrow member is manually added into py not ui file.
+        member_name = self.borrow_member.currentText()
+        member = Member.get(name=member_name)
+        if len(member) > 0:
+            member_id = member[0].id
+
         if start == datetime.date(2000, 1, 1):
             start = None
         end = self.borrow_add_end.date().toPyDate()
