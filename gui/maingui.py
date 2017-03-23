@@ -635,6 +635,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23 = QtGui.QHBoxLayout()
         self.horizontalLayout_23.setObjectName(_fromUtf8("horizontalLayout_23"))
         self.borrow_add_member_id = QtGui.QLineEdit(self.groupBox_11)
+
+        self.borrow_member = QtGui.QComboBox(self.groupBox_11)
+        self.horizontalLayout_23.addWidget(self.borrow_member)
+
         self.borrow_add_member_id.setInputMethodHints(QtCore.Qt.ImhNone)
         self.borrow_add_member_id.setObjectName(_fromUtf8("borrow_add_member_id"))
         self.horizontalLayout_23.addWidget(self.borrow_add_member_id)
